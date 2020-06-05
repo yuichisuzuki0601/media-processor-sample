@@ -1,0 +1,148 @@
+<html lang="ja">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>MediaProcessorSample</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+	<h1>MediaProcessorSample</h1>
+
+	<div>
+		<input id="file" type="file" accept=".wav,.mp3" />
+	</div>
+	<div>
+		<span>とりあえずファイル選択なしでも再生できます</span>
+	</div>
+
+	<br />
+
+	<div>
+		<button id="start">START</button>
+		<button id="stop">STOP</button>
+	</div>
+	<div>
+		<label for="play-time">PlayTime:</label>
+		<span id="play-time">0</span>
+		<span>sec</span>
+	</div>
+
+	<div class="box">
+		<h3>FadeIn</h3>
+		<div class="box-row">
+			<button id="switch-fade-in">FadeInSwitch</button>
+			<span id="fade-in-status">OFF</span>
+		</div>
+		<div class="box-row">
+			<label for="fade-in-duration">FadeInDuration:</label>
+			<input id="fade-in-duration" type="number" min="1" max="10" step="1" />
+			<span>sec</span>
+		</div>
+	</div>
+
+	<div class="box">
+		<h3>FadeOut</h3>
+		<div class="box-row">
+			<button id="switch-fade-out">FadeOutSwitch</button>
+			<span id="fade-out-status">OFF</span>
+		</div>
+		<div class="box-row">
+			<label for="fade-out-start-time">FadeOutStartTime:</label>
+			<input id="fade-out-start-time" type="number" min="1" max="1000000" step="1" />
+			<span>sec</span>
+		</div>
+		<div class="box-row">
+			<label for="fade-out-duration">FadeOutDuration:</label>
+			<input id="fade-out-duration" type="number" min="1" max="10" step="1" />
+			<span>sec</span>
+		</div>
+	</div>
+
+	<div class="box">
+		<h3>Cut</h3>
+		<div class="box-row">
+			<button id="switch-cut">CutSwitch</button>
+			<span id="cut-status">OFF</span>
+		</div>
+		<div class="box-row">
+			<label for="cut-start-time">CutStartTime:</label>
+			<input id="cut-start-time" type="number" min="1" max="1000000" step="1" />
+			<span>sec</span>
+		</div>
+		<div class="box-row">
+			<label for="cut-end-time">CutEndTime:</label>
+			<input id="cut-end-time" type="number" min="1" max="1000000" step="1" />
+			<span>sec</span>
+		</div>
+	</div>
+
+	<div class="box">
+		<h3>+Delay</h3>
+		<div class="box-row">
+			<button id="switch-delay">DelaySwitch</button>
+			<span id="delay-status">OFF</span>
+		</div>
+		<div class="box-row">
+			<label for="delay-time">Time:</label>
+			<input id="delay-time" type="number" min="0" max="5000" step="10" />
+			<span>msec</span>
+		</div>
+		<div class="box-row">
+			<label for="delay-feedback">Feedback:</label>
+			<!-- feedbackを9以上にすると、音声が発散するので注意! -->
+			<input id="delay-feedback" type="number" min="1" max="9" step="1" />
+		</div>
+	</div>
+
+	<div class="box">
+		<h3>+NaturalReverb</h3>
+		<div class="box-row">
+			<button id="switch-c-reverb">NaturalReverbSwitch</button>
+			<span id="c-reverb-status">OFF</span>
+		</div>
+		<div class="box-row">
+			<label for="c-reverb-type">Type:</label>
+			<select id="c-reverb-type"></select>
+		</div>
+		<div class="box-row">
+			<label for="c-reverb-gain">OutputGain:</label>
+			<input id="c-reverb-gain" type="number" min="0" max="10" step="0.5" />
+		</div>
+	</div>
+
+	<div class="box">
+		<h3>+DigitalReverb(Plate)</h3>
+		<div class="box-row">
+			<button id="switch-d-reverb">DigitalReverbSwitch</button>
+			<span id="d-reverb-status">OFF</span>
+		</div>
+		<div class="box-row">
+			<label for="d-reverb-gain">OutputGain:</label>
+			<input id="d-reverb-gain" type="number" min="0" max="10" step="0.5" />
+		</div>
+	</div>
+
+	<div class="box">
+		<h3>(おまけ)WaveDrawing</h3>
+		<div class="box-row">
+			<select id="wave-drawing-mode"></select>
+		</div>
+		<div class="box-row">
+			<canvas id="wave-canvas"></canvas>
+		</div>
+	</div>
+
+	<div class="box">
+		<h3>(おまけ)RecordExport</h3>
+		<div class="box-row">
+			<audio id="recorded-audio" controls controlsList="nodownload"></audio>
+		</div>
+		<div class="box-row">
+			<a id="recorded-anchor" download="recorded.webm">Download</a>
+		</div>
+	</div>
+</body>
+<script type="module" src="scripts.js"></script>
+</html>

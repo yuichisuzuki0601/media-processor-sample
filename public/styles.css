@@ -12,3 +12,8 @@ body {
 .box-row {
 	padding: 5px;
 }
+
+#warn-media-recorder {
+	color: red;
+	font-size: 0.75rem;
+}

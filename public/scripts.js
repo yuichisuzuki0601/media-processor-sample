@@ -133,10 +133,14 @@ element('#wave-drawing-mode').on('change', (e) => {
 mediaProcessor.setWaveDrawingTarget('#wave-canvas');
 
 // おまけ recordExport
-mediaProcessor.setOnRecordingFinishedCallback((dataUrl) => {
-	document.querySelector('#recorded-audio').src = dataUrl;
-	document.querySelector('#recorded-anchor').href = dataUrl;
-});
+if(window.MediaRecorder) {
+	mediaProcessor.setOnRecordingFinishedCallback((dataUrl) => {
+		document.querySelector('#recorded-audio').src = dataUrl;
+		document.querySelector('#recorded-anchor').href = dataUrl;
+	});
+} else {
+	element('#warn-media-recorder').innerText = 'レコーダーがサポートされていないブラウザです';
+}
 
 // load audio from server
 const req = new XMLHttpRequest();

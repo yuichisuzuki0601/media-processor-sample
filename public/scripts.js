@@ -115,6 +115,15 @@ element('#d-reverb-gain').on('change', (e) => {
 	schroederReverbBox.setOutputGain(Number(e.target.value));
 });
 
+// !!!new!!! download
+element('#download').on('click', () => {
+	const style = element('#loading').style;
+	style.display = 'block';
+	mediaProcessor.export().then(() => {
+		style.display = 'none';
+	});
+});
+
 // おまけ weveDrawing
 const waveDrawingModes = mediaProcessor.getWaveDrawingModes();
 for (let i = 0; i < waveDrawingModes.length; ++i) {
@@ -132,7 +141,7 @@ element('#wave-drawing-mode').on('change', (e) => {
 
 mediaProcessor.setWaveDrawingTarget('#wave-canvas');
 
-// おまけ recordExport
+// おまけ recordDiwnload
 if(window.MediaRecorder) {
 	mediaProcessor.setOnRecordingFinishedCallback((dataUrl) => {
 		document.querySelector('#recorded-audio').src = dataUrl;

@@ -1,6 +1,21 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
 body {
 	background: #F1F1F1;
 	text-align: center;
+}
+
+button {
+	cursor: pointer;
+}
+
+#contents {
+	height: calc(100vh - 20px);
+	overflow: auto;
+	padding: 10px;
 }
 
 .box {
@@ -16,4 +31,16 @@ body {
 #warn-media-recorder {
 	color: red;
 	font-size: 0.75rem;
+}
+
+#loading {
+	background: #000;
+	display: none;
+	height: 100vh;
+	left: 0;
+	opacity: 0.5;
+	position: absolute;
+	top: 0;
+	width: 100vw;
+	z-index: 1;
 }

@@ -11,6 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "ysd-media-processor": "^1.1.4"
+    "ysd-media-processor": "^1.2.0"
   }
 }
